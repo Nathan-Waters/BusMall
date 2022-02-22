@@ -62,19 +62,18 @@ function createImgs(){
   // when i use a while loop it crashes my browser?? //
   /////////////////////////////////////////////////////
 
-  //original loop
-  // while(itemOne === itemTwo || itemOne === itemTwo || itemTwo === itemThree){
-  //   let itemTwo = getRandomImg();
-  //   let itemThree = getRandomImg();
-  // }
-
-  while(itemOne === itemTwo){
+  while(itemOne === itemTwo || itemOne === itemThree || itemTwo === itemThree){
     itemTwo = getRandomImg();
-  }
-
-  while(itemOne === itemThree || itemTwo === itemThree){
     itemThree = getRandomImg();
   }
+
+  // while(itemOne === itemTwo){
+  //   itemTwo = getRandomImg();
+  // }
+
+  // while(itemOne === itemThree || itemTwo === itemThree){
+  //   itemThree = getRandomImg();
+  // }
 
   /////////////////////////////////////
   // end of loop thats causing issue //
