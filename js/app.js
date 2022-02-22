@@ -69,11 +69,11 @@ function createImgs(){
   // }
 
   while(itemOne === itemTwo){
-    let itemTwo = getRandomImg();
+    itemTwo = getRandomImg();
   }
 
   while(itemOne === itemThree || itemTwo === itemThree){
-    let itemThree = getRandomImg();
+    itemThree = getRandomImg();
   }
 
   /////////////////////////////////////
