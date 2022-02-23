@@ -14,6 +14,10 @@ let imgThree = document.getElementById('img-three');
 // let resultsButton = document.getElementById('show-results-button');
 // let displayList = document.getElementById('display-list');
 
+//////////localStoreage stuff
+//step 3: pull form local storage
+// let retrievedItems = localStorage.getItem(Items);
+
 
 //items constructor
 
@@ -140,6 +144,12 @@ function handleClick(event){
   if(totalVotes === 0){
     myContainer.removeEventListener('click', handleClick);
     labelName();
+
+    //step 1: Stringify 
+    // let stringifiedItems = JSON.stringify(allItems);
+
+    //step 2: put into local storage
+    // localStorage.setItem('items', stringifiedItems);
   }
 }
 
