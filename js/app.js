@@ -16,7 +16,13 @@ let imgThree = document.getElementById('img-three');
 
 //////////localStoreage stuff
 //step 3: pull form local storage
-// let retrievedItems = localStorage.getItem(Items);
+let retrievedItems = localStorage.getItem('items');
+console.log('retrieved Items', retrievedItems);
+
+//step 4: parse data
+
+let parsedItems = JSON.parse(retrievedItems);
+console.log(parsedItems);
 
 
 //items constructor
@@ -29,26 +35,31 @@ function Items(name, fileExtention = 'jpg'){
   allItems.push(this);
 }
 
-//creating our items
-new Items('bag');
-new Items('banana');
-new Items('bathroom');
-new Items('boots');
-new Items('breakfast');
-new Items('bubblegum');
-new Items('chair');
-new Items('cthulhu');
-new Items('dog-duck');
-new Items('dragon');
-new Items('pen');
-new Items('pet-sweep');
-new Items('scissors');
-new Items('shark');
-new Items('sweep', 'png');
-new Items('tauntaun');
-new Items('unicorn');
-new Items('water-can');
-new Items('wine-glass');
+//creating our items//setting localStorage lab13
+
+if(retrievedItems){
+  allItems = parsedItems;
+} else{
+  new Items('bag');
+  new Items('banana');
+  new Items('bathroom');
+  new Items('boots');
+  new Items('breakfast');
+  new Items('bubblegum');
+  new Items('chair');
+  new Items('cthulhu');
+  new Items('dog-duck');
+  new Items('dragon');
+  new Items('pen');
+  new Items('pet-sweep');
+  new Items('scissors');
+  new Items('shark');
+  new Items('sweep', 'png');
+  new Items('tauntaun');
+  new Items('unicorn');
+  new Items('water-can');
+  new Items('wine-glass');
+}
 
 console.log(allItems);
 
@@ -145,11 +156,12 @@ function handleClick(event){
     myContainer.removeEventListener('click', handleClick);
     labelName();
 
-    //step 1: Stringify 
-    // let stringifiedItems = JSON.stringify(allItems);
+    //step 1: Stringify
+    let stringifiedItems = JSON.stringify(allItems);
+    console.log('Stringified Items', stringifiedItems);
 
     //step 2: put into local storage
-    // localStorage.setItem('items', stringifiedItems);
+    localStorage.setItem('items', stringifiedItems);
   }
 }
 
