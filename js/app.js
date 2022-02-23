@@ -11,8 +11,8 @@ let myContainer = document.getElementById('container');
 let imgOne = document.getElementById('img-one');
 let imgTwo = document.getElementById('img-two');
 let imgThree = document.getElementById('img-three');
-let resultsButton = document.getElementById('show-results-button');
-let displayList = document.getElementById('display-list');
+// let resultsButton = document.getElementById('show-results-button');
+// let displayList = document.getElementById('display-list');
 
 
 //items constructor
@@ -134,23 +134,78 @@ function handleClick(event){
 
   //creates my images
   createImgs();
-
+  // console.log(labelClicksArr);
   if(totalVotes === 0){
     myContainer.removeEventListener('click', handleClick);
+    labelName();
   }
 }
 
+
+
+/////Old code for Ref//////
 // button showing the results
-function handleShowList(){
-  if(totalVotes === 0){
-    for(let i = 0; i < allItems.length; i++){
-      let li = document.createElement('li');
-      li.textContent = `${allItems[i].name} had ${allItems[i].clicks} votes, and was seen ${allItems[i].views}`;
-      displayList.appendChild(li);
-    }
+// function handleShowList(){
+//   if(totalVotes === 0){
+//     for(let i = 0; i < allItems.length; i++){
+//       let li = document.createElement('li');
+//       li.textContent = `${allItems[i].name} had ${allItems[i].clicks} votes, and was seen ${allItems[i].views}`;
+//       displayList.appendChild(li);
+//     }
+//   }
+// }
+/////Old code for Ref//////
+
+//creating an array of all my items names
+const ctx = document.getElementById('my-chart').getContext('2d');
+
+function labelName(){
+  let labelNameArr = [];
+  let labelClicksArr = [];
+  let labelViewsArr = [];
+  for(let i = 0;i < allItems.length; i++){
+    labelNameArr.push(allItems[i].name);
+    labelClicksArr.push(allItems[i].clicks);
+    labelViewsArr.push(allItems[i].views);
   }
+  // const ctx = document.getElementById('my-chart').getContext('2d');
+  const myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: labelNameArr,
+      datasets: [{
+        label: '# of Clicks',
+        data: labelClicksArr,
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+        ],
+        borderColor: [
+          'rgba(255, 99, 132, 1)'
+        ],
+        borderWidth: 1
+      },
+      {
+        label: '# of Views',
+        data: labelViewsArr,
+        backgroundColor: [
+          'rgba(0, 99, 132, 0.2)',
+        ],
+        borderColor: [
+          'rgba(0, 99, 132, 1)',
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
 }
 
 myContainer.addEventListener('click', handleClick);
 
-resultsButton.addEventListener('click', handleShowList);
+// resultsButton.addEventListener('click', handleShowList);
