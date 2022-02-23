@@ -53,17 +53,19 @@ function getRandomImg() {
   return Math.floor(Math.random() * allItems.length);
 }
 
-let randomImg = [];
-let randomImgBig = [];
+let randomImg = [];///// 0 1 2 3 4 5
+let randomImgBig = [];// 9 8 7 n n n n n n
 
 function createImgs(){
   if(randomImgBig.length > 3){
-    randomImgBig =[];
+    delete randomImgBig[3];
+    delete randomImgBig[4];
+    delete randomImgBig[5];
   }
   while(randomImg.length < 3){
     let numIndex = getRandomImg();
     while(!randomImgBig.includes(numIndex)){
-      randomImgBig.push(numIndex);
+      randomImgBig.unshift(numIndex);
       randomImg.push(numIndex);
     }
   }
