@@ -53,31 +53,51 @@ function getRandomImg() {
   return Math.floor(Math.random() * allItems.length);
 }
 
+let randomImg = [];
+let randomImgBig = [];
+
 function createImgs(){
-  let itemOne = getRandomImg();
-  let itemTwo = getRandomImg();
-  let itemThree = getRandomImg();
-
-  /////////////////////////////////////////////////////
-  // when i use a while loop it crashes my browser?? //
-  /////////////////////////////////////////////////////
-
-  while(itemOne === itemTwo || itemOne === itemThree || itemTwo === itemThree){
-    itemTwo = getRandomImg();
-    itemThree = getRandomImg();
+  if(randomImgBig.length > 3){
+    randomImgBig =[];
   }
+  while(randomImg.length < 3){
+    let numIndex = getRandomImg();
+    while(!randomImgBig.includes(numIndex)){
+      randomImgBig.push(numIndex);
+      randomImg.push(numIndex);
+    }
+  }
+  let itemOne = randomImg.pop();
+  let itemTwo = randomImg.pop();
+  let itemThree = randomImg.pop();
+  // console.log(randomImg);
+  console.log(randomImgBig);
 
-  // while(itemOne === itemTwo){
+  //////////////////////////////////////////////////////
+  ////old code for ref - please disregard *tips hat*////
+  // let savedIndexOne = [];
+  // let savedIndexTwo = [];
+
+  // while(randomImg.length < 3){
+  //   let imgSelectorOne = getRandomImg();
+  //   while(!savedIndexOne.includes(imgSelectorOne)){
+  //   randomImg.push(imgSelectorOne);
+  //   }
+
+  //   let imgSelectorTwo = getRandomImg();
+  //   while(!savedIndexTwo.includes(imgSelectorTwo)||!savedIndexTwo.includes(imgSelectorOne)){
+  //   randomImg.push(imgSelectorTwo);
+  // }
+
+  // let itemOne = getRandomImg();
+  // let itemTwo = getRandomImg();
+  // let itemThree = getRandomImg();
+
+  // while(itemOne === itemTwo || itemOne === itemThree || itemTwo === itemThree){
   //   itemTwo = getRandomImg();
-  // }
-
-  // while(itemOne === itemThree || itemTwo === itemThree){
   //   itemThree = getRandomImg();
-  // }
+  // }/////////////////////////////////////////////////////////////////////
 
-  /////////////////////////////////////
-  // end of loop thats causing issue //
-  /////////////////////////////////////
 
   imgOne.src = allItems[itemOne].src;
   imgOne.alt = allItems[itemOne].name;
@@ -91,9 +111,9 @@ function createImgs(){
   imgThree.alt = allItems[itemThree].name;
   allItems[itemThree].views++;
 
-  console.log(itemOne);
-  console.log(itemTwo);
-  console.log(itemThree);
+  // console.log(itemOne);
+  // console.log(itemTwo);
+  // console.log(itemThree);
 
 }
 
