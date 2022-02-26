@@ -1,3 +1,39 @@
+body {
+  width: 960px;
+  margin: auto;
+  background-color: lightgray;
+}
+
+h1 {
+  margin: auto;
+  /* height: 100px; */
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  margin-top: 15px;
+  background-color: grey;
+  font-size: 24px;
+  border-radius: 30px;
+}
+
 img {
   max-width: 300px;
+  max-height: 300px;
+  padding-left: auto;
+  padding-right: auto;
+  justify-content: space-between;
+  align-content: space-around;
+  border-radius: 30px;
+}
+
+section {
+  padding: 20px;
+}
+
+canvas {
+  padding: 30px;
+}
+
+#container{
+  justify-content: space-around;
 }
